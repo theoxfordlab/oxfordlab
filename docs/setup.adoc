@@ -1,0 +1,31 @@
+
+Project setup guide
+
+Mac
+1. install brew and cask
+    >> xcode-select --install
+    >> ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    >> brew doctor
+    >> brew install caskroom/cask/brew-cask
+2. install pip
+    install easy_install if it is not there
+    >> curl https://bootstrap.pypa.io/ez_setup.py -o - | sudo python
+    >> sudo easy_install pip
+3. install python
+    >> brew install python3
+4. install virtualenv
+    >> sudo pip install virtualenv
+5. install git
+    >> brew install git
+
+6. Create virtual environment
+    >> virtualenv ~/labenv -p `which python3`
+
+7. activate virtual environment
+    >> source ~/labenv/bin/activate
+
+8. Now create a directory like github project and clone oxfordlab repo
+    >> git clone git@github.com:theoxfordlab/oxfordlab.git
+    before doing this make sure your github setup is done
+    >> cd oxfordlab
+    >> run pip install -r requirements.txt
