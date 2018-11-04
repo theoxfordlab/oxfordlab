@@ -17,10 +17,18 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from users import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # url(r'^', views.home, name="home"),
+    url(r'^manage_urls/', views.manage_urls, name='manage_urls'),
+    url(r'^signup/', views.registration, name='signup'),
     url(r'^login/$', views.login_user, name='login'),
-    url(r'^main/', views.main, name='main')
+    url(r'^main/', views.main, name='main'),
+    url(r'^logout/', views.logout_view, name='logout'),
+    # url(r'', views.home, name="home"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
