@@ -1,15 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{% block content %}
-<h1>Manage Urls</h1>
-    <a href="/login/">Login</a>
-    <a href="/logout/">Logout</a>
-    <a href="/signup/">Signup</a>
+{% extends 'base.html' %}
+{% block body %}
+<div class="container-fluid">
+    <fieldset class="fieldset scheduler-border">
+        <legend class="scheduler-border">Manage Urls</legend>
+        <form class="">
+            {% block content %}
+                {% for url in urls %}
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <p class="form-control">{{url.url}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endblock %}
+        </form>
+    </fieldset>
+</div>
 {% endblock %}
-</body>
-</html>

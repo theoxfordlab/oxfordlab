@@ -12,7 +12,7 @@ fieldset.scheduler-border {
     padding: 0 10px 10px 10px;
     position: relative;
     margin-top: 20px;
-    background-color: #89CFF0;
+    background-color: #F0F8FF;
 }
 
 legend.scheduler-border {
@@ -23,5 +23,5 @@ legend.scheduler-border {
     margin: 10px;
     padding: 5px;
     border-radius: 20px;
-    background-color: #89CFF0;
+    background-color: #F0F8FF;
 }

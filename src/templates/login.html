@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-</head>
-<body style="">
+{% extends 'base.html' %}
+{% block body %}
 <div class="container">
     {% block main %}
+        {% if request.GET %}
+        <form class="form-horizontal" name="LoginForm" action="/login/?{{request.GET.urlencode}}" method="post" >
+        {% else %}
         <form class="form-horizontal" name="LoginForm" action="/login/" method="post">
+        {% endif %}
             {% csrf_token %}
             <fieldset class="fieldset scheduler-border">
                 <legend class="scheduler-border">
@@ -37,10 +31,9 @@
                         <button type="submit" class="btn btn-primary col-sm-6">Login</button>
                     </div>
                 </div>
-
             </fieldset>
         </form>
     {% endblock %}
 </div>
-</body>
-</html>
+
+{% endblock %}}

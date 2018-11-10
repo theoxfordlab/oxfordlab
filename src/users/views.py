@@ -10,9 +10,7 @@ def home(req):
 
 
 def login_user(request):
-    print("Inside login user")
     logout(request)
-    user_name = password = ''
     if request.POST:
         email = request.POST['email']
         password = request.POST['password']
@@ -20,17 +18,15 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                print("redirect to manage urls")
+                if request.GET.get('next'):
+                    return HttpResponseRedirect(request.GET['next'])
                 return HttpResponseRedirect('/manage_urls/')
     return render(request, 'login.html')
 
 
-@login_required(login_url='/main/')
+# @login_required(login_url='/main/')
 def main(request):
-    print("My name is abrar khan")
-    print(request.user)
-    print(request.user.is_authenticated)
-    return render(request=request, template_name="index.html")
+    return render(request=request, template_name="base.html")
 
 
 def registration(request):
@@ -50,7 +46,7 @@ def registration(request):
                 request, user,
                 backend='django.contrib.auth.backends.ModelBackend'
             )
-            return redirect('/main/')
+            return redirect('/')
         else:
             return render(request, 'signup.html', {'form': user_form})
 
@@ -59,12 +55,5 @@ def registration(request):
 
 
 def logout_view(request):
-    print("Logout")
     logout(request)
     return render(request=request, template_name="index.html")
-
-
-def manage_urls(request):
-    print("Inside manage Urls")
-    print(request.user.is_authenticated)
-    return render(request, template_name='manage_urls.html')
