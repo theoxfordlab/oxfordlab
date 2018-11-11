@@ -1,0 +1,29 @@
+{
+    "name": "The Oxford Lab",
+    "description": "Sent Url to the Oxford lab",
+    "version": "1.0",
+    "permissions": [
+        "cookies", "tabs", "declarativeContent",
+        "http://*/*", "https://*/*",
+        "http://127.0.0.1:8000/*",
+        "http://localhost:8000/*",
+        "storage"
+    ],
+    "browser_action": {
+        "default_icon": "hello_extensions.png"
+    },
+    "background": {
+        "scripts": ["js/background.js"]
+    },
+    "commands": {
+        "_execute_browser_action": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+S",
+                "mac": "MacCtrl+Shift+S"
+            },
+            "description": "Opens hello.html"
+        }
+    },
+    "web_accessible_resources": [ "templates/*", "js/*"],
+    "manifest_version": 2
+}

@@ -20,7 +20,7 @@ class Url(models.Model):
         User, related_name='urls', on_delete=models.CASCADE,
     )
     group = models.ForeignKey(
-        Group, related_name='urls', blank=True, null=True,
+        Group, related_name='urls', blank=True, null=True, default=None,
         on_delete=models.SET_NULL,
     )
     description = models.TextField(max_length=1023, null=True)
