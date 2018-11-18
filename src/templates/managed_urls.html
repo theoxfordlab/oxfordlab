@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container-fluid">
+    <fieldset class="fieldset scheduler-border">
+        <legend class="scheduler-border">Managed Urls</legend>
+       <form class="form-horizontal" action="{% url 'managed_urls' %}" method="post">
+           {% csrf_token %}
+           <div class="row">
+               <label class="control-label col-sm-2">Update Group</label>
+               <div class="col-sm-4">
+                   <select name="group_id" class="selectpicker form-control" data-style="btn-primary" data-size="5" title="Select Group" data-live-search="true">
+                        <option value=0>None</option>
+                        {% for grp in groups %}
+                            <option value={{grp.id}}>{{grp.name}}</option>
+                        {% endfor %}
+                    </select>
+               </div>
+               <div class="col-sm-2">
+                   <button type="submit" class="form-control btn btn-primary">Get Urls</button>
+               </div>
+           </div>
+           <br>
+           <div>
+               {% for url in urls %}
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Url </label>
+                        <div class="col-sm-5">
+                            <input type="text" readonly class="form-control" value="{{url.url}}"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                        <label class="control-label col-sm-2">Description</label>
+                        <div class="col-sm-10 d-print-none">
+                            <textarea readonly class="form-control">{{url.description}}</textarea>
+                        </div>
+                        </div>
+                    </div>
+                {% endfor %}
+           </div>
+       </form>
+    </fieldset>
+</div>
+{% endblock %}

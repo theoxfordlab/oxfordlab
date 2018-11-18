@@ -32,9 +32,9 @@ def main(request):
 def registration(request):
     if request.method == 'POST':
         user_form = SignUpForm(request.POST)
-        # for field in user_form:
-        #     for error in field.errors:
-        #         print("Error ", error)
+        for field in user_form:
+            for error in field.errors:
+                print("Error ", error)
         if user_form.is_valid():
             user = user_form.save()
             # f_name = user_form.cleaned_data['first_name']

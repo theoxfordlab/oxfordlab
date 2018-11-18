@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^logout/', views.logout_view, name='logout'),
     url(r'^add_new_url/$', manage_view.add_new_url, name='add_new_url'),
     url(r'^add_new_group/$', manage_view.add_new_group, name='add_new_group'),
+    url(r'^managed_urls/$', manage_view.managed_urls, name='managed_urls'),
     url(
         r'^update_url_group/$',
         manage_view.update_url_group,
