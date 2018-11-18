@@ -42,7 +42,11 @@ def registration(request):
             # username = f_name + l_name
             # raw_password = user_form.cleaned_data['password1']
             # user = authenticate(username=username, password=raw_password)
-            login(request, user, backend="django.contrib.auth.backends.ModelBackend")
+            login(
+                request,
+                user,
+                backend="django.contrib.auth.backends.ModelBackend",
+            )
             return redirect("/")
         else:
             return render(request, "signup.html", {"form": user_form})

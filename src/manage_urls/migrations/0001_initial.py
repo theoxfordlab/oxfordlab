@@ -50,7 +50,12 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("url", models.CharField(db_index=True, max_length=1023, unique=True)),
+                (
+                    "url",
+                    models.CharField(
+                        db_index=True, max_length=1023, unique=True
+                    ),
+                ),
                 ("description", models.TextField(max_length=1023, null=True)),
                 ("created_on", models.DateTimeField(auto_now_add=True)),
                 ("updated_on", models.DateTimeField(auto_now=True)),

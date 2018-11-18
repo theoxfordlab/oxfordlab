@@ -30,7 +30,11 @@ urlpatterns = [
     url(r"^add_new_url/$", manage_view.add_new_url, name="add_new_url"),
     url(r"^add_new_group/$", manage_view.add_new_group, name="add_new_group"),
     url(r"^managed_urls/$", manage_view.managed_urls, name="managed_urls"),
-    url(r"^update_url_group/$", manage_view.update_url_group, name="update_url_group"),
+    url(
+        r"^update_url_group/$",
+        manage_view.update_url_group,
+        name="update_url_group",
+    ),
     url(
         r"^add_new_url_extension/$",
         manage_view.add_new_url_extension,
@@ -40,4 +44,6 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(
+        settings.STATIC_URL, document_root=settings.STATIC_ROOT
+    )

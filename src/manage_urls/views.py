@@ -14,7 +14,9 @@ logger = structlog.get_logger()
 def add_new_url(request):
     groups = Group.objects.filter(user=request.user)
     if request.method == "POST":
-        group_id = request.POST["group_id"] if "group_id" in request.POST else "0"
+        group_id = (
+            request.POST["group_id"] if "group_id" in request.POST else "0"
+        )
 
         new_url = request.POST["new_url"]
         if group_id != "0":
@@ -30,15 +32,21 @@ def add_new_url(request):
                 print("Exception in find group")
         else:
             url = UnManagedUrl.objects.update_or_create(
-                url=new_url, user=request.user, description=request.POST["description"]
+                url=new_url,
+                user=request.user,
+                description=request.POST["description"],
             )
 
-    return render(request, template_name="add_new_url.html", context={"groups": groups})
+    return render(
+        request, template_name="add_new_url.html", context={"groups": groups}
+    )
 
 
 @login_required(login_url="/login/")
 def manage_urls(request):
-    urls = UnManagedUrl.objects.filter(Q(user=request.user)).order_by("-created_on")
+    urls = UnManagedUrl.objects.filter(Q(user=request.user)).order_by(
+        "-created_on"
+    )
     groups = Group.objects.filter(user=request.user)
     return render(
         request,
@@ -52,7 +60,9 @@ def add_new_group(request):
     if request.method == "POST":
         new_group = request.POST["new_group"]
         group = Group.objects.create(
-            name=new_group, user=request.user, description=request.POST["description"]
+            name=new_group,
+            user=request.user,
+            description=request.POST["description"],
         )
         group.save()
     return render(request, template_name="new_group.html")
@@ -95,9 +105,13 @@ def add_new_url_extension(request):
     if request.user.is_authenticated and "url" in request.GET:
         url = request.GET["url"]
         if len(url) > 0:
-            url = UnManagedUrl.objects.update_or_create(url=url, user=request.user)
+            url = UnManagedUrl.objects.update_or_create(
+                url=url, user=request.user
+            )
             print(url)
-            return JsonResponse({"success": True, "result": "Saved Successfully"})
+            return JsonResponse(
+                {"success": True, "result": "Saved Successfully"}
+            )
 
     return JsonResponse({"success": False, "error": "Something went wrong"})
 
@@ -105,11 +119,15 @@ def add_new_url_extension(request):
 @login_required(login_url="/login/")
 def managed_urls(request):
     logger.info(
-        "managed_urls_api_request", user=request.user.email, method=request.method
+        "managed_urls_api_request",
+        user=request.user.email,
+        method=request.method,
     )
     groups = Group.objects.filter(user=request.user)
     if request.method == "POST":
-        group_id = request.POST["group_id"] if "group_id" in request.POST else "0"
+        group_id = (
+            request.POST["group_id"] if "group_id" in request.POST else "0"
+        )
         if group_id != "0":
             group = Group.objects.get(id=group_id)
             urls = Url.objects.filter(group=group, user=request.user).order_by(

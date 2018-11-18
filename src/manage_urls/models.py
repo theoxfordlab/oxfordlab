@@ -6,7 +6,9 @@ from users.models import User
 
 class Group(models.Model):
     name = models.CharField(max_length=255)
-    user = models.ForeignKey(User, related_name="groups", on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User, related_name="groups", on_delete=models.CASCADE
+    )
     description = models.TextField(max_length=1023, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
@@ -16,7 +18,9 @@ class Group(models.Model):
 
 class Url(models.Model):
     url = models.CharField(max_length=1023, db_index=True)
-    user = models.ForeignKey(User, related_name="urls", on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User, related_name="urls", on_delete=models.CASCADE
+    )
     group = models.ForeignKey(
         Group,
         related_name="urls",

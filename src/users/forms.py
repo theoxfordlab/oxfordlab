@@ -1,12 +1,17 @@
 from django import forms
-from django.contrib.auth.forms import ReadOnlyPasswordHashField, UserCreationForm
+from django.contrib.auth.forms import (
+    ReadOnlyPasswordHashField,
+    UserCreationForm,
+)
 
 from .models import User
 
 
 class RegisterForm(forms.ModelForm):
     password1 = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(label="Confirm Password", widget=forms.PasswordInput)
+    password2 = forms.CharField(
+        label="Confirm Password", widget=forms.PasswordInput
+    )
 
     class Meta:
         model = User
@@ -94,7 +99,11 @@ class SignUpForm(UserCreationForm):
         required=True,
         help_text="Required",
         widget=forms.TextInput(
-            attrs={"class": "form-control", "name": "email", "placeholder": "Email"}
+            attrs={
+                "class": "form-control",
+                "name": "email",
+                "placeholder": "Email",
+            }
         ),
     )
     phone = forms.CharField(
@@ -102,7 +111,11 @@ class SignUpForm(UserCreationForm):
         required=True,
         help_text="Phone",
         widget=forms.TextInput(
-            attrs={"class": "form-control", "name": "phone", "placeholder": "Phone"}
+            attrs={
+                "class": "form-control",
+                "name": "phone",
+                "placeholder": "Phone",
+            }
         ),
     )
     password1 = forms.CharField(
@@ -143,4 +156,11 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("first_name", "last_name", "email", "phone", "password1", "password2")
+        fields = (
+            "first_name",
+            "last_name",
+            "email",
+            "phone",
+            "password1",
+            "password2",
+        )
