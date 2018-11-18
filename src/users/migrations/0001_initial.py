@@ -7,28 +7,53 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='User',
+            name="User",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('password', models.CharField(max_length=128, verbose_name='password')),
-                ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
-                ('first_name', models.CharField(blank=True, default='', max_length=100)),
-                ('last_name', models.CharField(blank=True, default='', max_length=100)),
-                ('email', models.EmailField(max_length=255, unique=True)),
-                ('phone', models.CharField(blank=True, max_length=20, null=True)),
-                ('active', models.BooleanField(default=True, help_text='\n            Designates whether this user should be treated as active.\n            Un-select this instead deleting accounts.\n        ')),
-                ('staff', models.BooleanField(default=False, help_text='\n            People from company\n        ')),
-                ('admin', models.BooleanField(default=False)),
-                ('created_on', models.DateTimeField()),
-                ('updated_on', models.DateTimeField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("password", models.CharField(max_length=128, verbose_name="password")),
+                (
+                    "last_login",
+                    models.DateTimeField(
+                        blank=True, null=True, verbose_name="last login"
+                    ),
+                ),
+                (
+                    "first_name",
+                    models.CharField(blank=True, default="", max_length=100),
+                ),
+                ("last_name", models.CharField(blank=True, default="", max_length=100)),
+                ("email", models.EmailField(max_length=255, unique=True)),
+                ("phone", models.CharField(blank=True, max_length=20, null=True)),
+                (
+                    "active",
+                    models.BooleanField(
+                        default=True,
+                        help_text="\n            Designates whether this user should be treated as active.\n            Un-select this instead deleting accounts.\n        ",
+                    ),
+                ),
+                (
+                    "staff",
+                    models.BooleanField(
+                        default=False,
+                        help_text="\n            People from company\n        ",
+                    ),
+                ),
+                ("admin", models.BooleanField(default=False)),
+                ("created_on", models.DateTimeField()),
+                ("updated_on", models.DateTimeField()),
             ],
-            options={
-                'abstract': False,
-            },
-        ),
+            options={"abstract": False},
+        )
     ]

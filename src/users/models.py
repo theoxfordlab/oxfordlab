@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from encrypted_id.models import EncryptedIDModel, EncryptedIDManager
 
 # Create your models here.
@@ -13,7 +13,7 @@ class UserManager(BaseUserManager, EncryptedIDManager):
         Create and save a User with the given email and password
         """
         if not email:
-            raise ValueError('Users must have an email address')
+            raise ValueError("Users must have an email address")
 
         user = self.model(email=email)
         user.set_password(password)
@@ -53,19 +53,19 @@ class User(AbstractBaseUser, EncryptedIDModel):
         help_text="""
             Designates whether this user should be treated as active.
             Un-select this instead deleting accounts.
-        """
+        """,
     )
     staff = models.BooleanField(
         default=False,
         help_text="""
             People from company
-        """
+        """,
     )
     admin = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []  # Email and password are required default
     objects = UserManager()
 

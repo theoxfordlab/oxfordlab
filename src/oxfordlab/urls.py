@@ -22,25 +22,21 @@ from django.conf.urls.static import static
 from manage_urls import views as manage_view
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'^manage_urls/$', manage_view.manage_urls, name='manage_urls'),
-    url(r'^signup/', views.registration, name='signup'),
-    url(r'^login/$', views.login_user, name='login'),
-    url(r'^logout/', views.logout_view, name='logout'),
-    url(r'^add_new_url/$', manage_view.add_new_url, name='add_new_url'),
-    url(r'^add_new_group/$', manage_view.add_new_group, name='add_new_group'),
-    url(r'^managed_urls/$', manage_view.managed_urls, name='managed_urls'),
+    path("admin/", admin.site.urls),
+    url(r"^manage_urls/$", manage_view.manage_urls, name="manage_urls"),
+    url(r"^signup/", views.registration, name="signup"),
+    url(r"^login/$", views.login_user, name="login"),
+    url(r"^logout/", views.logout_view, name="logout"),
+    url(r"^add_new_url/$", manage_view.add_new_url, name="add_new_url"),
+    url(r"^add_new_group/$", manage_view.add_new_group, name="add_new_group"),
+    url(r"^managed_urls/$", manage_view.managed_urls, name="managed_urls"),
+    url(r"^update_url_group/$", manage_view.update_url_group, name="update_url_group"),
     url(
-        r'^update_url_group/$',
-        manage_view.update_url_group,
-        name='update_url_group'
-    ),
-    url(
-        r'^add_new_url_extension/$',
+        r"^add_new_url_extension/$",
         manage_view.add_new_url_extension,
-        name='add_new_url_extension',
+        name="add_new_url_extension",
     ),
-    url(r'^$', views.home, name="home"),
+    url(r"^$", views.home, name="home"),
 ]
 
 if settings.DEBUG:

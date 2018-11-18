@@ -12,16 +12,16 @@ def home(req):
 def login_user(request):
     logout(request)
     if request.POST:
-        email = request.POST['email']
-        password = request.POST['password']
+        email = request.POST["email"]
+        password = request.POST["password"]
         user = authenticate(username=email, password=password)
         if user is not None:
             if user.is_active:
                 login(request, user)
-                if request.GET.get('next'):
-                    return HttpResponseRedirect(request.GET['next'])
-                return HttpResponseRedirect('/manage_urls/')
-    return render(request, 'login.html')
+                if request.GET.get("next"):
+                    return HttpResponseRedirect(request.GET["next"])
+                return HttpResponseRedirect("/manage_urls/")
+    return render(request, "login.html")
 
 
 # @login_required(login_url='/main/')
@@ -30,7 +30,7 @@ def main(request):
 
 
 def registration(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         user_form = SignUpForm(request.POST)
         for field in user_form:
             for error in field.errors:
@@ -42,16 +42,13 @@ def registration(request):
             # username = f_name + l_name
             # raw_password = user_form.cleaned_data['password1']
             # user = authenticate(username=username, password=raw_password)
-            login(
-                request, user,
-                backend='django.contrib.auth.backends.ModelBackend'
-            )
-            return redirect('/')
+            login(request, user, backend="django.contrib.auth.backends.ModelBackend")
+            return redirect("/")
         else:
-            return render(request, 'signup.html', {'form': user_form})
+            return render(request, "signup.html", {"form": user_form})
 
     form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, "signup.html", {"form": form})
 
 
 def logout_view(request):
