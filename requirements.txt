@@ -2,7 +2,7 @@ appnope==0.1.0
 backcall==0.1.0
 colorama==0.4.0
 decorator==4.3.0
-Django==2.1.1
+Django<=2.1.1
 django-encrypted-id==0.3.1
 ipython==7.0.1
 ipython-genutils==0.2.0
@@ -12,7 +12,7 @@ pexpect==4.6.0
 pickleshare==0.7.5
 prompt-toolkit==2.0.4
 ptyprocess==0.6.0
-pycrypto==2.6.1
+pycrypto<=2.6.1
 Pygments==2.2.0
 pytz==2018.5
 simplegeneric==0.8.1
@@ -20,3 +20,4 @@ six==1.11.0
 structlog==18.2.0
 traitlets==4.3.2
 wcwidth==0.1.7
+safety==1.8.4
