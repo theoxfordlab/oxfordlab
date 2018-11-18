@@ -3,3 +3,7 @@
 src/db.sqlite3
 .DS_Store
 *.pyc
+src/oxfordlab/settings.py
+http:/*
+static_cdn/*
+src/oxfordlab/settings.py

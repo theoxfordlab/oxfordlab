@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OxFordLab</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+</head>
+<body>
+
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+
+        <!-- BRAND -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#alignment-example" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">OxfordLab</a>
+            </div>
+
+                <!-- COLLAPSIBLE NAVBAR -->
+            <div class="collapse navbar-collapse" id="alignment-example">
+
+                <!-- Links -->
+                {% if user.is_authenticated %}
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'add_new_url' %}">Add New Url<span class="sr-only">(current)</span></a></li>
+                        <li><a href="{% url 'add_new_group' %}">Add New Group</a></li>
+                        <li><a href="{% url 'manage_urls' %}">Manage Urls</a></li>
+                        <li><a href="{% url 'managed_urls' %}">Managed Urls</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'logout' %}">Logout {{user.first_name}}</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'signup' %}">SignUp</a></li>
+                    </ul>
+                {% endif %}
+                <!-- Search -->
+                <!--<form class="navbar-form navbar-right" role="search">-->
+                    <!--<div class="form-group">-->
+                        <!--<div class="col-md-10">-->
+                            <!--<input type="text" class="form-control">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<button type="submit" class="btn btn-default">Search</button>-->
+                <!--</form>-->
+
+            </div>
+
+        </div>
+    </nav>
+
+{% block body %}
+            <h1>Base</h1>
+{% endblock %}
+
+</body>
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous">
+    </script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous">
+    </script>
+    <script
+            src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js">
+    </script>
+    <script>
+$(".nav a").on("click", function(){
+   $(".nav").find(".active").removeClass("active");
+   $(this).parent().addClass("active");
+});
+    </script>
+</html>
