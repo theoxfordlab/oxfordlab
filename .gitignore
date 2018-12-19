@@ -7,3 +7,4 @@ src/oxfordlab/settings.py
 http:/*
 static_cdn/*
 src/oxfordlab/settings.py
+.doit.db.db

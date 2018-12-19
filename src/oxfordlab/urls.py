@@ -40,6 +40,7 @@ urlpatterns = [
         manage_view.add_new_url_extension,
         name="add_new_url_extension",
     ),
+    url(r"^test$"),
     url(r"^$", views.home, name="home"),
 ]
 

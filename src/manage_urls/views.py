@@ -142,3 +142,13 @@ def managed_urls(request):
         template_name="managed_urls.html",
         context={"urls": urls, "groups": groups},
     )
+
+
+def test(request):
+    if request.method == "POST":
+        print("Post method")
+
+    return HttpResponseRedirect(
+        request=request,
+        template_name="test.html"
+    )
